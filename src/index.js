@@ -34,6 +34,15 @@ document.addEventListener('DOMContentLoaded', ()=> {
             const deleteBtn = document.createElement('button')
             deleteBtn.className = 'btn-danger'
             deleteBtn.innerHTML = "Delete"
+            deleteBtn.addEventListener('click', ()=> deleteQuote())
+
+            const deleteQuote = () => {
+                const url = `http://localhost:3000/quotes/${quote.id}`
+                const reqObj = {method: 'DELETE'}
+
+                fetch(url, reqObj)
+                .then(quoteLi.remove())
+            }
 
             const hr = document.createElement('hr')
 
